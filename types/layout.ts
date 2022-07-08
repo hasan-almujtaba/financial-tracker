@@ -1,6 +1,7 @@
 import type { ReactElement, ReactNode } from 'react'
 import type { NextPage } from 'next'
 import type { AppProps } from 'next/app'
+import { Session } from 'next-auth'
 
 /**
  * Extend NextPage
@@ -15,6 +16,7 @@ export type NextPageWithLayout = NextPage & {
  */
 export type AppPropsWithLayout = AppProps & {
   Component: NextPageWithLayout
+  session: Session
 }
 
 /**
