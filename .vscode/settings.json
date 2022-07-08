@@ -6,5 +6,9 @@
       "backgroundColor": "#e74c3c",
       "color": "#fff"
     }
-  ]
+  ],
+  "yaml.schemas": {
+    "file:///c%3A/Users/sanka/.vscode/extensions/atlassian.atlascode-2.10.7/resources/schemas/pipelines-schema.json": "bitbucket-pipelines.yml",
+    "https://json.schemastore.org/github-workflow.json": "file:///e%3A/projects/www/financial-tracker/.github/workflows/deploy.yml"
+  }
 }
