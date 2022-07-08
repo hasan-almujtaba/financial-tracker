@@ -14,7 +14,6 @@ specifiers:
   '@typescript-eslint/eslint-plugin': ^5.28.0
   '@typescript-eslint/parser': ^5.28.0
   axios: ^0.27.2
-  cookies-next: ^2.0.4
   dayjs: ^1.11.3
   eslint: 8.17.0
   eslint-config-next: 12.1.6
@@ -38,7 +37,6 @@ dependencies:
   '@mantine/next': 4.2.9_gmasn6zbane5syiez4ch2fbf3q
   '@mantine/notifications': 4.2.9_d6aiuykcth4kgoni4twbp62wfu
   axios: 0.27.2
-  cookies-next: 2.0.4
   dayjs: 1.11.3
   next: 12.2.1_biqbaboplfbrettd7655fr4n2y
   next-auth: 4.9.0_biqbaboplfbrettd7655fr4n2y
@@ -335,6 +333,14 @@ packages:
       glob: 7.1.7
     dev: true
 
+  /@next/swc-android-arm-eabi/12.2.1:
+    resolution: {integrity: sha512-Gk7fvo1McA9gues9hixoeoxKnvvUusW0P+fya4ZAU3us+bQm1EqSoDrnOrUsdsgwIPQ3HobOJPY5C3xvKOl/tA==}
+    engines: {node: '>= 10'}
+    cpu: [arm]
+    os: [android]
+    requiresBuild: true
+    optional: true
+
   /@next/swc-android-arm64/12.2.1:
     resolution: {integrity: sha512-J+QwWRm2+bOtacZFahoplX3dCYGDpou86VjfcE+M5/E0UCtBmZ6JvItyV4scK8wSKHQQUWq8DmOEm/C0lhsSRQ==}
     engines: {node: '>= 10'}
@@ -575,10 +581,6 @@ packages:
     dependencies:
       tslib: 2.4.0
 
-  /@types/cookie/0.4.1:
-    resolution: {integrity: sha512-XW/Aa8APYr6jSVVA1y/DEIZX0/GMKLEVekNG727R8cs56ahETkRAy/3DR7+fJyh7oUgGwNQaRfXCun0+KbWY7Q==}
-    dev: false
-
   /@types/json-schema/7.0.11:
     resolution: {integrity: sha512-wOuvG1SN4Us4rez+tylwwwCV1psiNVOkJeM3AUWUNWg/jDQY2+HE/444y5gc+jBmRqASOm2Oeh5c1axHobwRKQ==}
     dev: true
@@ -586,10 +588,6 @@ packages:
   /@types/json5/0.0.29:
     resolution: {integrity: sha512-dRLjCWHYg4oaA77cxO64oO+7JwCwnIzkZPdrrC71jQmQtlhM556pwKo5bUzqvZndkVbeFLIIi+9TC40JNF5hNQ==}
     dev: true
-
-  /@types/node/16.11.41:
-    resolution: {integrity: sha512-mqoYK2TnVjdkGk8qXAVGc/x9nSaTpSrFaGFm43BUH3IdoBV0nta6hYaGmdOvIMlbHJbUEVen3gvwpwovAZKNdQ==}
-    dev: false
 
   /@types/node/17.0.42:
     resolution: {integrity: sha512-Q5BPGyGKcvQgAMbsr7qEGN/kIPN6zZecYYABeTDBizOsau+2NMdSVTar9UQw21A2+JyA2KRNDYaYrPB0Rpk2oQ==}
@@ -939,14 +937,6 @@ packages:
   /cookie/0.4.2:
     resolution: {integrity: sha512-aSWTXFzaKWkvHO1Ny/s+ePFpvKsPnjc551iI41v3ny/ow6tBG5Vd+FuqGNhh1LxOmVzOlGUriIlOaokOvhaStA==}
     engines: {node: '>= 0.6'}
-    dev: false
-
-  /cookies-next/2.0.4:
-    resolution: {integrity: sha512-fqjwJNksW/WEu8ou1SEXJCKYyg7nrQRsjlfbIF5tp96SrQq1Fzome1To27tPxhoPN/vgFuzCt573Pri9bE+H+g==}
-    dependencies:
-      '@types/cookie': 0.4.1
-      '@types/node': 16.11.41
-      cookie: 0.4.2
     dev: false
 
   /core-js-pure/3.23.1:
@@ -2061,6 +2051,7 @@ packages:
       styled-jsx: 5.0.2_react@18.2.0
       use-sync-external-store: 1.1.0_react@18.2.0
     optionalDependencies:
+      '@next/swc-android-arm-eabi': 12.2.1
       '@next/swc-android-arm64': 12.2.1
       '@next/swc-darwin-arm64': 12.2.1
       '@next/swc-darwin-x64': 12.2.1

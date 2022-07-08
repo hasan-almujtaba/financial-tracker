@@ -1,5 +1,5 @@
-import { NextPageWithLayout } from '../types/layout'
-import DefaultLayout from '../components/layouts/default'
+import { NextPageWithLayout } from '@/types/layout'
+import DashboardLayout from '@/components/layouts/DashboardLayout/DashboardLayout'
 import { ReactElement } from 'react'
 import { dehydrate, QueryClient } from 'react-query'
 import { fetchPosts } from '../apis/example'
@@ -20,7 +20,7 @@ const Home: NextPageWithLayout = () => {
 }
 
 Home.getLayout = (page: ReactElement) => {
-  return <DefaultLayout>{page}</DefaultLayout>
+  return <DashboardLayout>{page}</DashboardLayout>
 }
 
 /**
