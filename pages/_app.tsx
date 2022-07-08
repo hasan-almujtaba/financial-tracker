@@ -9,11 +9,13 @@ import { useState } from 'react'
 import { getCookie, setCookies } from 'cookies-next'
 import { Hydrate, QueryClient, QueryClientProvider } from 'react-query'
 import { ReactQueryDevtools } from 'react-query/devtools'
+import { SessionProvider } from 'next-auth/react'
 
 const App = ({
   Component,
   pageProps,
   preferredColorScheme,
+  session,
 }: AppPropsWithLayout & { preferredColorScheme: ColorScheme }) => {
   /**
    * React Query Configuration
@@ -39,23 +41,25 @@ const App = ({
   }
 
   return (
-    <QueryClientProvider client={queryClient}>
-      <Hydrate state={pageProps.dehydratedState}>
-        <ColorSchemeProvider
-          colorScheme={colorScheme}
-          toggleColorScheme={toggleColorScheme}
-        >
-          <MantineProvider
-            withGlobalStyles
-            theme={{ colorScheme }}
-            withNormalizeCSS
+    <SessionProvider session={session}>
+      <QueryClientProvider client={queryClient}>
+        <Hydrate state={pageProps.dehydratedState}>
+          <ColorSchemeProvider
+            colorScheme={colorScheme}
+            toggleColorScheme={toggleColorScheme}
           >
-            {getLayout(<Component {...pageProps} />)}
-          </MantineProvider>
-        </ColorSchemeProvider>
-      </Hydrate>
-      <ReactQueryDevtools />
-    </QueryClientProvider>
+            <MantineProvider
+              withGlobalStyles
+              theme={{ colorScheme }}
+              withNormalizeCSS
+            >
+              {getLayout(<Component {...pageProps} />)}
+            </MantineProvider>
+          </ColorSchemeProvider>
+        </Hydrate>
+        <ReactQueryDevtools />
+      </QueryClientProvider>
+    </SessionProvider>
   )
 }
 
