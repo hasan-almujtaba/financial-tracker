@@ -2,6 +2,7 @@ name: Deploy on release
 on:
   release:
     types: [published]
+  workflow_dispatch:
 jobs:
   vercel:
     runs-on: ubuntu-latest
