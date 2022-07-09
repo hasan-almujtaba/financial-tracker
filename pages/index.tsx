@@ -1,81 +1,59 @@
 import { NextPageWithLayout } from '@/types/layout'
 import DefaultLayout from '@/components/layouts/DefaultLayout/DefaultLayout'
 import { ReactElement, useEffect, useState } from 'react'
-import useStore from '../store'
-import { Affix, Box, Button, Text } from '@mantine/core'
+import { Button } from '@mantine/core'
 import { dehydrate, QueryClient } from 'react-query'
+import { BsArrowRight, BsGoogle } from 'react-icons/bs'
 import Head from 'next/head'
-import FeatureList from '../components/features/FeatureList'
+import { signIn, useSession } from 'next-auth/react'
 import Link from 'next/link'
 
 const Home: NextPageWithLayout = () => {
-  /**
-   * Bind state from zustand
-   */
-  const countState = useStore((state) => state.count)
-  const incrementCountState = useStore((state) => state.increment)
+  const { data } = useSession()
 
-  /**
-   * Local state
-   */
-  const [count, setCount] = useState(0)
-
-  /**
-   * Set data from state to local state on mounted
-   */
-  useEffect(() => {
-    setCount(countState)
-  }, [countState])
+  const onLoginButtonClick = () => {
+    signIn('google', { callbackUrl: '/dashboard' })
+  }
 
   return (
     <>
       <Head>
         <title>Home</title>
       </Head>
-      <Box
-        sx={() => ({
-          textAlign: 'center',
-        })}
-      >
-        <h1>Next Starter</h1>
-        <Text sx={() => ({ fontStyle: 'italic' })}>
-          Opinionated react starter built on top of Next JS
-        </Text>
-      </Box>
-
-      <FeatureList />
-
-      <Link href="/example">
-        <Text
-          sx={() => ({
-            cursor: 'pointer',
-            textAlign: 'center',
-            marginTop: '10px',
-            '&:hover': {
-              textDecorationLine: 'underline',
-            },
-          })}
-        >
-          See example in action
-        </Text>
-      </Link>
-
-      <Affix position={{ bottom: 25, right: 20 }}>
-        <Button
-          onClick={incrementCountState}
-          radius={100}
-          sx={() => ({
-            height: '60px',
-            width: '60px',
-          })}
-        >
-          {count}
-        </Button>
-      </Affix>
+      <div>
+        {data ? (
+          <Link href="/dashboard">
+            <Button
+              variant="outline"
+              sx={() => ({
+                textTransform: 'capitalize',
+              })}
+              leftIcon={<BsArrowRight size={18} />}
+            >
+              Go to dashboard
+            </Button>
+          </Link>
+        ) : (
+          <Button
+            variant="outline"
+            sx={() => ({
+              textTransform: 'capitalize',
+            })}
+            leftIcon={<BsGoogle size={18} />}
+            onClick={onLoginButtonClick}
+          >
+            Login with google
+          </Button>
+        )}
+      </div>
     </>
   )
 }
 
+/**
+ * Configure persistent layout
+ * @see https://nextjs.org/docs/basic-features/layouts
+ */
 Home.getLayout = (page: ReactElement) => {
   return <DefaultLayout>{page}</DefaultLayout>
 }
