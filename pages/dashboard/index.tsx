@@ -1,10 +1,10 @@
 import { dehydrate, QueryClient } from 'react-query'
 import { useSession } from 'next-auth/react'
+import { useGetIncomes } from '@/hooks/incomes'
 
 const DashboardIndex = () => {
-  const { data } = useSession()
-
-  return <div>{data?.user.id}</div>
+  const { data } = useGetIncomes()
+  return <div>isin</div>
 }
 
 /**
