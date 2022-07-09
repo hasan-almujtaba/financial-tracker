@@ -1,17 +1,17 @@
-import { dehydrate, QueryClient } from 'react-query'
 import { NextPageWithLayout } from '@/types/layout'
 import DashboardLayout from '@/components/layouts/DashboardLayout/DashboardLayout'
 import { ReactElement } from 'react'
+import { dehydrate, QueryClient } from 'react-query'
 
-const DashboardIndex: NextPageWithLayout = () => {
-  return <div>isin</div>
+const DashboardTransactions: NextPageWithLayout = () => {
+  return <div>Transaction</div>
 }
 
 /**
  * Configure persistent layout
  * @see https://nextjs.org/docs/basic-features/layouts
  */
-DashboardIndex.getLayout = (page: ReactElement) => {
+DashboardTransactions.getLayout = (page: ReactElement) => {
   return <DashboardLayout>{page}</DashboardLayout>
 }
 
@@ -30,4 +30,4 @@ export const getStaticProps = async () => {
   }
 }
 
-export default DashboardIndex
+export default DashboardTransactions

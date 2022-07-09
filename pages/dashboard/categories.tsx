@@ -3,15 +3,15 @@ import { NextPageWithLayout } from '@/types/layout'
 import DashboardLayout from '@/components/layouts/DashboardLayout/DashboardLayout'
 import { ReactElement } from 'react'
 
-const DashboardIndex: NextPageWithLayout = () => {
-  return <div>isin</div>
+const DashboardCategories: NextPageWithLayout = () => {
+  return <div>Categories</div>
 }
 
 /**
  * Configure persistent layout
  * @see https://nextjs.org/docs/basic-features/layouts
  */
-DashboardIndex.getLayout = (page: ReactElement) => {
+DashboardCategories.getLayout = (page: ReactElement) => {
   return <DashboardLayout>{page}</DashboardLayout>
 }
 
@@ -30,4 +30,4 @@ export const getStaticProps = async () => {
   }
 }
 
-export default DashboardIndex
+export default DashboardCategories
