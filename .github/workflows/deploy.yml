@@ -16,10 +16,24 @@ jobs:
           envVariableKeys: NEXT_PUBLIC_API_URL,NEXTAUTH_SECRET,NEXTAUTH_URL,GOOGLE_CLIENT_ID,GOOGLE_CLIENT_SECRET
         env:
           NEXT_PUBLIC_API_URL: ${{ secrets.NEXT_PUBLIC_API_URL }}
+          TARGET_NEXT_PUBLIC_API_URL: preview,development,production
+          TYPE_NEXT_PUBLIC_API_URL: encrypted
+
           NEXTAUTH_SECRET: ${{ secrets.NEXTAUTH_SECRET }}
+          TARGET_NEXTAUTH_SECRET: preview,development,production
+          TYPE_NEXTAUTH_SECRET: encrypted
+
           NEXTAUTH_URL: ${{ secrets.NEXTAUTH_URL }}
+          TARGET_NEXTAUTH_URL: preview,development,production
+          TYPE_NEXTAUTH_URL: encrypted
+
           GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
+          TARGET_GOOGLE_CLIENT_ID: preview,development,production
+          TYPE_GOOGLE_CLIENT_ID: encrypted
+
           GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
+          TARGET_GOOGLE_CLIENT_SECRET: preview,development,production
+          TYPE_GOOGLE_CLIENT_SECRET: encrypted
 
       - name: Deploy site to vercel
         uses: amondnet/vercel-action@v20
