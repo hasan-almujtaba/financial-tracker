@@ -1,24 +1,35 @@
 import { StateCreator } from 'zustand'
+import { Category } from './category'
 
 /**
- * Independent slices
+ * Example slices
  */
-export interface Example {
+export interface ExampleSlice {
   count: number
   increment: () => void
 }
 
 /**
- * Main Store
+ * Category slices
  */
-export type Store = Example
+export interface CategorySlice {
+  categories: Category[]
+  getCategoryLastId: () => number
+  addCategory: (category: Category) => void
+  removeCategory: (id: number) => void
+}
 
 /**
- * Set & Get for independent slices
- * See https://github.com/pmndrs/zustand/blob/main/docs/typescript.md#independent-slices-pattern
+ * Main Store Type
  */
-export type StoreCreator = StateCreator<
+export type Store = ExampleSlice & CategorySlice
+
+/**
+ * Store creator type for interdependent slices
+ */
+export type StoreCreator<T> = StateCreator<
   Store,
-  [['zustand/devtools', never], ['zustand/persist', unknown]],
-  []
+  [['zustand/devtools', unknown], ['zustand/persist', unknown]],
+  [],
+  T
 >
