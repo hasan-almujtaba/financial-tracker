@@ -2,9 +2,30 @@ import { dehydrate, QueryClient } from 'react-query'
 import { NextPageWithLayout } from '@/types/layout'
 import DashboardLayout from '@/components/layouts/DashboardLayout/DashboardLayout'
 import { ReactElement } from 'react'
+import Head from 'next/head'
+import PageHeader from '@/components/header/PageHeader/PageHeader'
+import CategoryTable from '@/components/categories/CategoryTable/CategoryTable'
+import AddCategory from '@/components/categories/AddCategory/AddCategory'
 
 const DashboardCategories: NextPageWithLayout = () => {
-  return <div>Categories</div>
+  return (
+    <>
+      <Head>
+        <title>Category</title>
+      </Head>
+
+      <div>
+        <PageHeader
+          title="Category"
+          subtitle="Organize your transaction categories here, the categories you add will be saved in local storage"
+        />
+
+        <AddCategory />
+
+        <CategoryTable />
+      </div>
+    </>
+  )
 }
 
 /**
