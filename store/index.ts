@@ -2,6 +2,7 @@ import create from 'zustand'
 import { devtools, persist } from 'zustand/middleware'
 import { Store } from '../types/store'
 import createExample from './example'
+import createCategory from './category'
 
 /**
  * Create Store
@@ -9,9 +10,15 @@ import createExample from './example'
  */
 const useStore = create<Store>()(
   devtools(
-    persist((...a) => ({
-      ...createExample(...a),
-    }))
+    persist(
+      (...a) => ({
+        ...createExample(...a),
+        ...createCategory(...a),
+      }),
+      {
+        name: 'finn-tracker-zustand',
+      }
+    )
   )
 )
 
