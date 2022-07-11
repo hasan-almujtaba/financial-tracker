@@ -1,42 +1,26 @@
-# Next Starter
+# Financial Tracker
 
-React with Next JS configured out of the box for building any type of website with clean code and better Developer Experience
+Track your daily financial transaction
 
 ## Live Demo
 
-[Live Demo](https://next-start.netlify.app)
+[Live Demo](hhttp://finn-tracker.vercel.app/)
 
 ## Features
 
-- Next JS with typescript configured out of the box
-- Easily handling client state with [Zustand](https://github.com/pmndrs/zustand)
-- Handling server state with [React Query](https://react-query.tanstack.com/)
-- Create custom ui with [Mantine](https://mantine.dev/)
-- Multiple hooks ready to use from Mantine
-- Clean code with Eslint and Prettier
-- Import popular icon from [React Icons](https://react-icons.github.io/react-icons/)
-- Handle http request with axios
+- Organize transaction categories locally
+- Add Expense and income
 
-## Extension
-
-- Eslint for linting code
-- Prettier for code formatting
-- Code spell checker to avoid misspell or typo in code
-- TODO Highlight in comment
-
-## Try it now!
-
-### Github Template
-
-[Create repo from this template](https://github.com/hasan-almujtaba/next-starter/generate)
-
-### Clone to local
-
-```bash
-pnpm dlx degit hasan-almujtaba/next-starter my-app
-cd my-app
-pnpm i
-```
+## Technical
+- [ ] Using 3rd Party API for reminder. Example, Google calendar
+- [x] Save all data locally, using state or indexDB (Partially)
+- [x] Using responsive web will be perfect that we can open it on any device
+- [x] implement ReactJS, Route, Component, Props, Hooks.
+- [ ] Add unitest on business logic of the application with min 80% coverage.
+- [x] Implement version control with branching.
+- [x] Better implement with NextJS.
+- [x] Deploy the application to cloud service providers, such as Vercel, Surge, or Netlify.
+- [x] implement github action for continuous integration and continuous deployment. (Partially, for deployment)
 
 ## Usage
 
