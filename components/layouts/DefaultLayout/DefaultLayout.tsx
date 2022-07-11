@@ -59,7 +59,7 @@ const DefaultLayout = ({ children }: DefaultLayout) => {
               </ActionButton>
               <ActionButton
                 tooltip="View Source Code"
-                link="https://github.com/hasan-almujtaba/financial-planner"
+                link="https://github.com/hasan-almujtaba/financial-tracker"
                 target="_blank"
               >
                 <BsGithub size={18} />
