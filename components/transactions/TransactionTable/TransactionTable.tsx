@@ -1,6 +1,6 @@
 import { supabase } from '@/plugins/supabase'
-import { TransactionTable } from '@/types/transaction'
-import { Table, Button, Text, Modal } from '@mantine/core'
+import { Transaction, TransactionTable } from '@/types/transaction'
+import { Table, Button, Text, Modal, ScrollArea } from '@mantine/core'
 import { useMutation } from 'react-query'
 import useStyles from './TransactionTable.styles'
 import { showNotification } from '@mantine/notifications'
@@ -9,8 +9,9 @@ import { useQueryClient } from 'react-query'
 import { useFormatter } from '@/hooks/formatter'
 import { useModals } from '@mantine/modals'
 import { useState } from 'react'
+import EditTransactionForm from '../EditTransactionForm/EditTransactionForm'
 
-const TransactionTable = ({ transactions, type }: TransactionTable) => {
+const TransactionTable = ({ transactions }: TransactionTable) => {
   /**
    * Use styles from useStyles variable
    */
@@ -35,7 +36,7 @@ const TransactionTable = ({ transactions, type }: TransactionTable) => {
    * Mutation for delete transaction
    */
   const deleteTransaction = useMutation(async (id: string) => {
-    const { error } = await supabase.from(type).delete().match({ id })
+    const { error } = await supabase.from('transactions').delete().match({ id })
 
     if (error) throw error
   })
@@ -56,7 +57,7 @@ const TransactionTable = ({ transactions, type }: TransactionTable) => {
               message: 'Transaction successfully deleted',
               icon: <BsCheck size={18} />,
             })
-            queryClient.invalidateQueries([type])
+            queryClient.invalidateQueries(['transactions'])
           },
         })
       },
@@ -67,6 +68,26 @@ const TransactionTable = ({ transactions, type }: TransactionTable) => {
    * Open state for edit modal
    */
   const [opened, setOpened] = useState(false)
+
+  /**
+   * Edit data container
+   */
+  const [data, setData] = useState<Transaction>({
+    amount: '',
+    category: '',
+    date: '',
+    note: '',
+    user_id: '',
+    type: '',
+  })
+
+  /**
+   * Handle edit button click
+   */
+  const onEditButtonClick = (transaction: Transaction) => {
+    setData(transaction)
+    setOpened(true)
+  }
 
   /**
    * Table placeholder on empty data
@@ -89,32 +110,41 @@ const TransactionTable = ({ transactions, type }: TransactionTable) => {
     <tr key={i}>
       <td>{currencyFormatter(item.amount)}</td>
       <td>{item.category}</td>
-      <td>{dateFormatter(item.date, 'dddd, DD MMMM YYYY')}</td>
+      <td>{dateFormatter(item.date as string, 'dddd, DD MMMM YYYY')}</td>
       <td className={classes.actionContainer}>
         <Button
           color="red"
+          size="xs"
           onClick={() => onDeleteButtonClick(item.id || '')}
         >
           Delete
         </Button>
-        <Button color="green">Edit</Button>
+        <Button
+          color="green"
+          size="xs"
+          onClick={() => onEditButtonClick(item)}
+        >
+          Edit
+        </Button>
       </td>
     </tr>
   ))
 
   return (
     <>
-      <Table>
-        <thead>
-          <tr>
-            <th>Amount</th>
-            <th>Category</th>
-            <th>Date</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>{transactions.length === 0 ? empty : transactionRow}</tbody>
-      </Table>
+      <ScrollArea>
+        <Table>
+          <thead>
+            <tr>
+              <th>Amount</th>
+              <th>Category</th>
+              <th>Date</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>{transactions.length === 0 ? empty : transactionRow}</tbody>
+        </Table>
+      </ScrollArea>
 
       <Modal
         opened={opened}
@@ -122,7 +152,10 @@ const TransactionTable = ({ transactions, type }: TransactionTable) => {
         centered
         onClose={() => setOpened(false)}
       >
-        <form></form>
+        <EditTransactionForm
+          setOpened={setOpened}
+          transaction={data}
+        />
       </Modal>
     </>
   )
