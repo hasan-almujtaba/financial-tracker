@@ -9,6 +9,8 @@ import { Hydrate, QueryClient, QueryClientProvider } from 'react-query'
 import { ReactQueryDevtools } from 'react-query/devtools'
 import { SessionProvider } from 'next-auth/react'
 import { useLocalStorage } from '@mantine/hooks'
+import { NotificationsProvider } from '@mantine/notifications'
+import { ModalsProvider } from '@mantine/modals'
 
 const App = ({ Component, pageProps, session }: AppPropsWithLayout) => {
   /**
@@ -47,7 +49,14 @@ const App = ({ Component, pageProps, session }: AppPropsWithLayout) => {
               theme={{ colorScheme }}
               withNormalizeCSS
             >
-              {getLayout(<Component {...pageProps} />)}
+              <ModalsProvider>
+                <NotificationsProvider
+                  position="top-right"
+                  zIndex={2077}
+                >
+                  {getLayout(<Component {...pageProps} />)}
+                </NotificationsProvider>
+              </ModalsProvider>
             </MantineProvider>
           </ColorSchemeProvider>
         </Hydrate>

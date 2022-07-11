@@ -2,9 +2,30 @@ import { NextPageWithLayout } from '@/types/layout'
 import DashboardLayout from '@/components/layouts/DashboardLayout/DashboardLayout'
 import { ReactElement } from 'react'
 import { dehydrate, QueryClient } from 'react-query'
+import Head from 'next/head'
+import PageHeader from '@/components/header/PageHeader/PageHeader'
+import AddTransaction from '@/components/transactions/AddTransaction/AddTransaction'
+import TransactionTabs from '@/components/transactions/TransactionTabs/TransactionTabs'
 
 const DashboardTransactions: NextPageWithLayout = () => {
-  return <div>Transaction</div>
+  return (
+    <>
+      <Head>
+        <title>Transaction</title>
+      </Head>
+
+      <div>
+        <PageHeader
+          title="Transaction"
+          subtitle="Add your transaction here, all transaction will be saved on the cloud"
+        />
+
+        <AddTransaction />
+
+        <TransactionTabs />
+      </div>
+    </>
+  )
 }
 
 /**
