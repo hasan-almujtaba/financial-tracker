@@ -15,3 +15,7 @@ export interface TransactionTable {
 export interface TransactionFormProps {
   requestHandler: (transaction: Transaction) => Promise<void>
 }
+
+export interface CreateTransactionFormProps {
+  setOpened: (opened: boolean) => void
+}
