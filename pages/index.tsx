@@ -1,6 +1,6 @@
 import { NextPageWithLayout } from '@/types/layout'
 import DefaultLayout from '@/components/layouts/DefaultLayout/DefaultLayout'
-import { ReactElement, useEffect, useState } from 'react'
+import { ReactElement } from 'react'
 import { Button } from '@mantine/core'
 import { dehydrate, QueryClient } from 'react-query'
 import { BsArrowRight, BsGoogle } from 'react-icons/bs'

@@ -4,7 +4,8 @@ export interface Transaction {
   amount: string
   category: string
   note?: string
-  date: string
+  date: string | Date
+  type: string
 }
 
 export interface TransactionTable {
@@ -12,10 +13,11 @@ export interface TransactionTable {
   type: 'incomes' | 'expenses'
 }
 
-export interface TransactionFormProps {
-  requestHandler: (transaction: Transaction) => Promise<void>
-}
-
 export interface CreateTransactionFormProps {
   setOpened: (opened: boolean) => void
+}
+
+export interface EditTransactionFormProps {
+  setOpened: (opened: boolean) => void
+  transaction: Transaction
 }

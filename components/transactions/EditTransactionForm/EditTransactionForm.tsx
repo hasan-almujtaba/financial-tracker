@@ -2,32 +2,26 @@ import { Button, Select, Textarea, TextInput } from '@mantine/core'
 import { z } from 'zod'
 import { zodResolver, useForm } from '@mantine/form'
 import { DatePicker } from '@mantine/dates'
-import useStyles from './CreateTransactionForm.styles'
+import useStyles from './EditTransactionForm.styles'
 import useCategories from '@/hooks/categories'
 import { useMutation, useQueryClient } from 'react-query'
 import { useSession } from 'next-auth/react'
-import { useState } from 'react'
-import { CreateTransactionFormProps, Transaction } from '@/types/transaction'
+import { useEffect, useState } from 'react'
+import { EditTransactionFormProps, Transaction } from '@/types/transaction'
 import { supabase } from '@/plugins/supabase'
 import { showNotification } from '@mantine/notifications'
 import { BsCheck } from 'react-icons/bs'
-import { useFormatter } from '@/hooks/formatter'
 
-const CreateTransactionForm = ({ setOpened }: CreateTransactionFormProps) => {
+const EditTransactionForm = ({
+  setOpened,
+  transaction,
+}: EditTransactionFormProps) => {
   /**
    * Session Hooks
    */
   const { data } = useSession()
 
-  /**
-   * Component styling
-   */
   const { classes } = useStyles()
-
-  /**
-   * Formatter hooks
-   */
-  const { dateFormatter } = useFormatter()
 
   /**
    * React query client hook
@@ -59,7 +53,10 @@ const CreateTransactionForm = ({ setOpened }: CreateTransactionFormProps) => {
    */
   const { mutate, isLoading } = useMutation(
     async (transaction: Transaction) => {
-      const { error } = await supabase.from('transactions').insert(transaction)
+      const { error } = await supabase
+        .from('transactions')
+        .update(transaction)
+        .match({ id: transaction.id })
 
       if (error) throw error
     }
@@ -78,15 +75,37 @@ const CreateTransactionForm = ({ setOpened }: CreateTransactionFormProps) => {
   /**
    * Handle form input
    */
-  const form = useForm({
+  const form = useForm<Transaction>({
     schema: zodResolver(validationSchema),
     initialValues: {
       amount: '',
       category: '',
       note: '',
       date: '',
+      type: '',
+      user_id: '',
     },
   })
+
+  /**
+   * Set values on transactions change
+   */
+
+  useEffect(() => {
+    const setFormValue = () => {
+      setActiveType(transaction.type)
+
+      form.setValues({
+        amount: transaction.amount,
+        category: transaction.category,
+        date: new Date(transaction.date),
+        note: transaction.note || '',
+        user_id: '',
+        type: '',
+      })
+    }
+    setFormValue()
+  }, [transaction]) // eslint-disable-line react-hooks/exhaustive-deps
 
   /**
    * Handle form submit
@@ -97,9 +116,10 @@ const CreateTransactionForm = ({ setOpened }: CreateTransactionFormProps) => {
       amount: values.amount,
       category: values.category,
       note: values.note,
-      date: dateFormatter(values.date, 'YYYY-MM-DD'),
+      date: values.date,
       user_id: data?.user.id || '',
       type: activeType,
+      id: transaction.id,
     }
 
     mutate(submitData, {
@@ -111,6 +131,7 @@ const CreateTransactionForm = ({ setOpened }: CreateTransactionFormProps) => {
         })
         form.reset()
         setOpened(false)
+        console.log(activeType)
         queryClient.invalidateQueries(['transactions'])
       },
       onError: () => {
@@ -180,4 +201,4 @@ const CreateTransactionForm = ({ setOpened }: CreateTransactionFormProps) => {
   )
 }
 
-export default CreateTransactionForm
+export default EditTransactionForm
