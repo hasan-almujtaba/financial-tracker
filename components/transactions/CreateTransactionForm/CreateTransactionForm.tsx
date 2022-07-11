@@ -11,6 +11,7 @@ import { CreateTransactionFormProps, Transaction } from '@/types/transaction'
 import { supabase } from '@/plugins/supabase'
 import { showNotification } from '@mantine/notifications'
 import { BsCheck } from 'react-icons/bs'
+import { useFormatter } from '@/hooks/formatter'
 
 const CreateTransactionForm = ({ setOpened }: CreateTransactionFormProps) => {
   /**
@@ -19,6 +20,11 @@ const CreateTransactionForm = ({ setOpened }: CreateTransactionFormProps) => {
   const { data } = useSession()
 
   const { classes } = useStyles()
+
+  /**
+   * Formatter hooks
+   */
+  const { dateFormatter } = useFormatter()
 
   /**
    * React query client hook
@@ -90,7 +96,7 @@ const CreateTransactionForm = ({ setOpened }: CreateTransactionFormProps) => {
       amount: values.amount,
       category: values.category,
       note: values.note,
-      date: values.date,
+      date: dateFormatter(values.date, 'YYYY-MM-DD'),
       user_id: data?.user.id || '',
     }
 
