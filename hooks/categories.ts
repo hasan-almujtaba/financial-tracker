@@ -18,7 +18,7 @@ const useCategories = (activeType: string) => {
   useEffect(() => {
     const formatCategories = () => {
       const filteredCategories = categoriesState.filter(
-        (item) => item.type !== activeType
+        (item) => item.type === activeType
       )
       const formattedCategories = filteredCategories.map((item) => item.name)
 
