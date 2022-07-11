@@ -4,7 +4,7 @@ Track your daily financial transaction
 
 ## Live Demo
 
-[Live Demo](hhttp://finn-tracker.vercel.app/)
+[Live Demo](https://finn-tracker.vercel.app)
 
 ## Features
 
