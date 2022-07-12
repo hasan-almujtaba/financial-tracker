@@ -95,6 +95,7 @@ export const useSeparateTransactions = (transaction: Transaction[]) => {
 }
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
+
 /**
  * Sum amount transaction based on date
  * @param data - Transaction Data
@@ -117,4 +118,14 @@ export const useTransactionByDate = (data: any) => {
     return acc
   }, {})
 }
-/* eslint-disable @typescript-eslint/no-explicit-any */
+
+/* eslint-enable @typescript-eslint/no-explicit-any */
+
+export const useTotalTransactions = (transaction: Transaction[]) => {
+  // sum amount of transaction
+  const total = transaction.reduce((acc: number, cur: Transaction) => {
+    return acc + parseInt(cur.amount)
+  }, 0)
+
+  return total
+}

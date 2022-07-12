@@ -5,6 +5,7 @@ import { ReactElement } from 'react'
 import Head from 'next/head'
 import PageHeader from '@/components/header/PageHeader/PageHeader'
 import ReportChart from '@/components/reports/ReportChart/ReportChart'
+import ReportCardGroup from '@/components/reports/ReportCardGroup/ReportCardGroup'
 
 const DashboardIndex: NextPageWithLayout = () => {
   return (
@@ -18,6 +19,8 @@ const DashboardIndex: NextPageWithLayout = () => {
           title="Report"
           subtitle="See your cash flow report from your transaction"
         />
+
+        <ReportCardGroup />
 
         <ReportChart />
       </div>

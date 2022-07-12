@@ -21,3 +21,8 @@ export interface EditTransactionFormProps {
   setOpened: (opened: boolean) => void
   transaction: Transaction
 }
+
+export interface ReportCardProps {
+  title: string
+  amount: string | number
+}
