@@ -10,8 +10,8 @@ import {
 } from '@mantine/core'
 import { DefaultLayout } from '@/types/layout'
 import useStyles from './DashboardLayout.styles'
-import ProfileButton from '@/components/profile/ProfileButton/ProfileButton'
-import NavigationLinkGroup from '@/components/navigation/NavigationLinkGroup/NavigationLinkGroup'
+import ProfileButton from '@/components/ProfileButton/ProfileButton'
+import NavigationLinkGroup from '@/components/NavigationLinkGroup/NavigationLinkGroup'
 
 const DashboardLayout = ({ children }: DefaultLayout) => {
   /**

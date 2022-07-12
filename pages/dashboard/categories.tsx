@@ -1,11 +1,11 @@
 import { dehydrate, QueryClient } from 'react-query'
 import { NextPageWithLayout } from '@/types/layout'
-import DashboardLayout from '@/components/layouts/DashboardLayout/DashboardLayout'
+import DashboardLayout from '@/components/DashboardLayout/DashboardLayout'
 import { ReactElement } from 'react'
 import Head from 'next/head'
-import PageHeader from '@/components/header/PageHeader/PageHeader'
-import CategoryTable from '@/components/categories/CategoryTable/CategoryTable'
-import AddCategory from '@/components/categories/AddCategory/AddCategory'
+import PageHeader from '@/components/PageHeader/PageHeader'
+import CategoryTable from '@/components/CategoryTable/CategoryTable'
+import AddCategory from '@/components/AddCategory/AddCategory'
 
 const DashboardCategories: NextPageWithLayout = () => {
   return (

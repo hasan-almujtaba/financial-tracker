@@ -2,7 +2,7 @@ import { useGetTransactions } from '@/hooks/transaction'
 import { Transaction } from '@/types/transaction'
 import { Tabs } from '@mantine/core'
 import { useEffect, useState } from 'react'
-import TransactionTable from '../TransactionTable/TransactionTable'
+import TransactionTable from '@/components/TransactionTable/TransactionTable'
 
 const TransactionTabs = () => {
   const { data } = useGetTransactions('transactions')

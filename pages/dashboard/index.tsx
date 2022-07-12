@@ -1,11 +1,11 @@
 import { dehydrate, QueryClient } from 'react-query'
 import { NextPageWithLayout } from '@/types/layout'
-import DashboardLayout from '@/components/layouts/DashboardLayout/DashboardLayout'
+import DashboardLayout from '@/components/DashboardLayout/DashboardLayout'
 import { ReactElement } from 'react'
 import Head from 'next/head'
-import PageHeader from '@/components/header/PageHeader/PageHeader'
-import ReportChart from '@/components/reports/ReportChart/ReportChart'
-import ReportCardGroup from '@/components/reports/ReportCardGroup/ReportCardGroup'
+import PageHeader from '@/components/PageHeader/PageHeader'
+import ReportChart from '@/components/ReportChart/ReportChart'
+import ReportCardGroup from '@/components/ReportCardGroup/ReportCardGroup'
 
 const DashboardIndex: NextPageWithLayout = () => {
   return (

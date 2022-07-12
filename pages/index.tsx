@@ -1,5 +1,5 @@
 import { NextPageWithLayout } from '@/types/layout'
-import DefaultLayout from '@/components/layouts/DefaultLayout/DefaultLayout'
+import DefaultLayout from '@/components/DefaultLayout/DefaultLayout'
 import { ReactElement } from 'react'
 import { Button } from '@mantine/core'
 import { dehydrate, QueryClient } from 'react-query'

@@ -9,7 +9,7 @@ import { useQueryClient } from 'react-query'
 import { useFormatter } from '@/hooks/formatter'
 import { useModals } from '@mantine/modals'
 import { useState } from 'react'
-import EditTransactionForm from '../EditTransactionForm/EditTransactionForm'
+import EditTransactionForm from '@/components/EditTransactionForm/EditTransactionForm'
 
 const TransactionTable = ({ transactions }: TransactionTable) => {
   /**

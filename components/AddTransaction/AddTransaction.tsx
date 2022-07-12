@@ -1,7 +1,7 @@
 import { Button, Modal } from '@mantine/core'
 import { useState } from 'react'
 import useStyles from './AddTransaction.styles'
-import CreateTransactionForm from '../CreateTransactionForm/CreateTransactionForm'
+import CreateTransactionForm from '@/components/CreateTransactionForm/CreateTransactionForm'
 
 const AddTransaction = () => {
   /**

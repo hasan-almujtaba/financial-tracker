@@ -3,9 +3,8 @@ import {
   BsFileEarmarkSpreadsheet,
   BsWallet,
   BsArrowLeftRight,
-  // BsFillStickiesFill,
 } from 'react-icons/bs'
-import NavigationLink from '@/components/navigation/NavigationLink/NavigationLink'
+import NavigationLink from '@/components/NavigationLink/NavigationLink'
 import { useRouter } from 'next/router'
 
 const links = [

@@ -1,4 +1,4 @@
-import { DefaultLayout } from '../../../types/layout'
+import { DefaultLayout } from '@/types/layout'
 import {
   AppShell,
   Header,
@@ -7,7 +7,7 @@ import {
   Box,
 } from '@mantine/core'
 import useStyles from './DefaultLayout.styles'
-import ActionButton from '@/components/base/ActionButton/ActionButton'
+import ActionButton from '@/components/ActionButton/ActionButton'
 import { BsGithub, BsSunFill, BsMoonFill } from 'react-icons/bs'
 
 const DefaultLayout = ({ children }: DefaultLayout) => {

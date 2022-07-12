@@ -2,7 +2,7 @@ import { Category } from '@/types/category'
 import { Table } from '@mantine/core'
 import { useEffect, useState } from 'react'
 import useStore from 'store'
-import CategoryTableRow from '../CategoryTableRow/CategoryTableRow'
+import CategoryTableRow from '@/components/CategoryTableRow/CategoryTableRow'
 import useStyles from './CategoryTable.styles'
 
 const CategoryTable = () => {

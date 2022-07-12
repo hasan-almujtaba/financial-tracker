@@ -1,11 +1,11 @@
 import { NextPageWithLayout } from '@/types/layout'
-import DashboardLayout from '@/components/layouts/DashboardLayout/DashboardLayout'
+import DashboardLayout from '@/components/DashboardLayout/DashboardLayout'
 import { ReactElement } from 'react'
 import { dehydrate, QueryClient } from 'react-query'
 import Head from 'next/head'
-import PageHeader from '@/components/header/PageHeader/PageHeader'
-import AddTransaction from '@/components/transactions/AddTransaction/AddTransaction'
-import TransactionTabs from '@/components/transactions/TransactionTabs/TransactionTabs'
+import PageHeader from '@/components/PageHeader/PageHeader'
+import AddTransaction from '@/components/AddTransaction/AddTransaction'
+import TransactionTabs from '@/components/TransactionTabs/TransactionTabs'
 
 const DashboardTransactions: NextPageWithLayout = () => {
   return (
