@@ -15,6 +15,7 @@ specifiers:
   '@typescript-eslint/eslint-plugin': ^5.28.0
   '@typescript-eslint/parser': ^5.28.0
   axios: ^0.27.2
+  chart.js: ^3.8.0
   dayjs: ^1.11.3
   eslint: 8.17.0
   eslint-config-next: 12.1.6
@@ -23,10 +24,12 @@ specifiers:
   next-auth: ^4.9.0
   prettier: 2.7.0
   react: 18.2.0
+  react-chartjs-2: ^4.2.0
   react-dom: 18.2.0
   react-icons: ^4.4.0
   react-query: ^3.39.1
   typescript: 4.7.3
+  use-deep-compare-effect: ^1.8.1
   zod: ^3.17.3
   zustand: 4.0.0-rc.1
 
@@ -40,13 +43,16 @@ dependencies:
   '@mantine/notifications': 4.2.9_d6aiuykcth4kgoni4twbp62wfu
   '@supabase/supabase-js': 1.35.4
   axios: 0.27.2
+  chart.js: 3.8.0
   dayjs: 1.11.3
   next: 12.2.1_biqbaboplfbrettd7655fr4n2y
   next-auth: 4.9.0_biqbaboplfbrettd7655fr4n2y
   react: 18.2.0
+  react-chartjs-2: 4.2.0_yw232gbma4xqgfjmup6t23g3w4
   react-dom: 18.2.0_react@18.2.0
   react-icons: 4.4.0_react@18.2.0
   react-query: 3.39.1_biqbaboplfbrettd7655fr4n2y
+  use-deep-compare-effect: 1.8.1_react@18.2.0
   zod: 3.17.3
   zustand: 4.0.0-rc.1_react@18.2.0
 
@@ -978,6 +984,10 @@ packages:
       supports-color: 7.2.0
     dev: true
 
+  /chart.js/3.8.0:
+    resolution: {integrity: sha512-cr8xhrXjLIXVLOBZPkBZVF6NDeiVIrPLHcMhnON7UufudL+CNeRrD+wpYanswlm8NpudMdrt3CHoLMQMxJhHRg==}
+    dev: false
+
   /clsx/1.1.1:
     resolution: {integrity: sha512-6/bPho624p3S2pMyvP5kKBPXnI3ufHLObBFCfgx+LkeR5lg2XYy2hqZqUf45ypD8COn2bhgGJSUE+l5dhNBieA==}
     engines: {node: '>=6'}
@@ -1105,6 +1115,11 @@ packages:
   /delayed-stream/1.0.0:
     resolution: {integrity: sha512-ZySD7Nf91aLB0RxL4KGrKHBXl7Eds1DAmEdcoVawXnLD7SDhpNgtuII2aAkg7a7QS41jxPSZ17p4VdGnMHk3MQ==}
     engines: {node: '>=0.4.0'}
+    dev: false
+
+  /dequal/2.0.3:
+    resolution: {integrity: sha512-0je+qPKHEMohvfRTCEo3CrPG6cAzAYgmzKyxRiYSSDkS6eGJdyVJm7WaYA5ECaAD9wLB2T4EEeymA5aFVcYXCA==}
+    engines: {node: '>=6'}
     dev: false
 
   /detect-node/2.1.0:
@@ -2426,6 +2441,16 @@ packages:
     resolution: {integrity: sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A==}
     dev: true
 
+  /react-chartjs-2/4.2.0_yw232gbma4xqgfjmup6t23g3w4:
+    resolution: {integrity: sha512-9Vm9Sg9XAKiR579/FnBkesofjW9goaaFLfS7XlGTzUJlWFZGSE6A/pBI6+i/bP3pobKZoFcWJdFnjShytToqXw==}
+    peerDependencies:
+      chart.js: ^3.5.0
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0
+    dependencies:
+      chart.js: 3.8.0
+      react: 18.2.0
+    dev: false
+
   /react-dom/18.2.0_react@18.2.0:
     resolution: {integrity: sha512-6IMTriUmvsjHUjNtEDudZfuDQUoWXVxKHhlEGSk81n4YFS+r/Kl99wXiwlVXtPBtJenozv2P+hxDsw9eA7Xo6g==}
     peerDependencies:
@@ -2862,6 +2887,17 @@ packages:
     peerDependencies:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0
     dependencies:
+      react: 18.2.0
+    dev: false
+
+  /use-deep-compare-effect/1.8.1_react@18.2.0:
+    resolution: {integrity: sha512-kbeNVZ9Zkc0RFGpfMN3MNfaKNvcLNyxOAAd9O4CBZ+kCBXXscn9s/4I+8ytUER4RDpEYs5+O6Rs4PqiZ+rHr5Q==}
+    engines: {node: '>=10', npm: '>=6'}
+    peerDependencies:
+      react: '>=16.13'
+    dependencies:
+      '@babel/runtime': 7.18.3
+      dequal: 2.0.3
       react: 18.2.0
     dev: false
 
