@@ -2,9 +2,30 @@ import { dehydrate, QueryClient } from 'react-query'
 import { NextPageWithLayout } from '@/types/layout'
 import DashboardLayout from '@/components/layouts/DashboardLayout/DashboardLayout'
 import { ReactElement } from 'react'
+import Head from 'next/head'
+import PageHeader from '@/components/header/PageHeader/PageHeader'
+import ReportChart from '@/components/reports/ReportChart/ReportChart'
+import ReportCardGroup from '@/components/reports/ReportCardGroup/ReportCardGroup'
 
 const DashboardIndex: NextPageWithLayout = () => {
-  return <div>isin</div>
+  return (
+    <>
+      <Head>
+        <title>Report</title>
+      </Head>
+
+      <div>
+        <PageHeader
+          title="Report"
+          subtitle="See your cash flow report from your transaction"
+        />
+
+        <ReportCardGroup />
+
+        <ReportChart />
+      </div>
+    </>
+  )
 }
 
 /**
