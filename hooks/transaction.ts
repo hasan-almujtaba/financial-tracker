@@ -94,37 +94,41 @@ export const useSeparateTransactions = (transaction: Transaction[]) => {
   }
 }
 
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
 /**
  * Sum amount transaction based on date
  * @param data - Transaction Data
  * @returns Transaction grouped by date
  */
-export const useTransactionByDate = (data: any) => {
-  /**
-   * Hooks for formatting
-   */
-  const { dateFormatter } = useFormatter()
+export const useTransactionByDate = (data: Transaction[]) => {
+  const totalAmount = data.reduce((previous: Transaction[], current) => {
+    const item = previous.find((item) => item.date === current.date)
 
-  return data.reduce((acc: any, cur: any) => {
-    const key = dateFormatter(cur.date as string, 'DD-MM-YYYY')
-    const amount = parseInt(cur.amount)
-    if (acc[key]) {
-      acc[key] += amount
+    if (item) {
+      item.amount = +item.amount + +current.amount
     } else {
-      acc[key] = amount
+      previous.push({
+        ...current,
+        amount: +current.amount,
+      })
     }
-    return acc
-  }, {})
+
+    return previous
+  }, [])
+
+  const results = totalAmount.map((item) => item.amount)
+
+  return results
 }
 
-/* eslint-enable @typescript-eslint/no-explicit-any */
-
+/**
+ * count total amount of transaction
+ * @param transaction - Transaction data
+ * @returns total amount of transaction
+ */
 export const useTotalTransactions = (transaction: Transaction[]) => {
   // sum amount of transaction
   const total = transaction.reduce((acc: number, cur: Transaction) => {
-    return acc + parseInt(cur.amount)
+    return acc + parseInt(cur.amount as string)
   }, 0)
 
   return total

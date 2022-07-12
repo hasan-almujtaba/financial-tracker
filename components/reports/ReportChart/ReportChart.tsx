@@ -46,7 +46,9 @@ const ReportChart = () => {
    */
   const { expenses, incomes, dates } = useSeparateTransactions(data as [])
 
-  // sum incomes amount with same date
+  /**
+   * group transactions by date
+   */
   const incomesByDate = useTransactionByDate(incomes)
   const expensesByDate = useTransactionByDate(expenses)
 
