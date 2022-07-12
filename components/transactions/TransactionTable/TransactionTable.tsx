@@ -108,7 +108,7 @@ const TransactionTable = ({ transactions }: TransactionTable) => {
    */
   const transactionRow = transactions.map((item, i) => (
     <tr key={i}>
-      <td>{currencyFormatter(item.amount)}</td>
+      <td>{currencyFormatter(String(item.amount))}</td>
       <td>{item.category}</td>
       <td>{dateFormatter(item.date as string, 'dddd, DD MMMM YYYY')}</td>
       <td className={classes.actionContainer}>
