@@ -1,6 +1,8 @@
 import { Button, Modal, Select, TextInput } from '@mantine/core'
 import { useForm } from '@mantine/hooks'
+import { showNotification } from '@mantine/notifications'
 import { useState } from 'react'
+import { BsCheck } from 'react-icons/bs'
 import useStore from 'store'
 import useStyles from './AddCategory.styles'
 
@@ -52,6 +54,14 @@ const AddCategory = () => {
     }
 
     addCategory(newCategory)
+
+    setTimeout(() => {
+      showNotification({
+        title: 'Success',
+        message: 'Category successfully added',
+        icon: <BsCheck size={18} />,
+      })
+    }, 500)
 
     setOpened(false)
     form.reset()
