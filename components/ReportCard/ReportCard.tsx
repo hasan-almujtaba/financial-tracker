@@ -1,9 +1,13 @@
 import { useFormatter } from '@/hooks/formatter'
-import { ReportCardProps } from '@/types/transaction'
 import { Card, Text } from '@mantine/core'
 import useStyles from './ReportCard.styles'
 
-const ReportCard = ({ title, amount }: ReportCardProps) => {
+interface Props {
+  title: string
+  amount: string | number
+}
+
+const ReportCard = ({ title, amount }: Props) => {
   /**
    * Component styles
    */

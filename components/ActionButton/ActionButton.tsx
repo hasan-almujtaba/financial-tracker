@@ -1,15 +1,17 @@
 import { Tooltip, UnstyledButton } from '@mantine/core'
-import { ActionButtonProps } from '@/types/button'
 import { useMediaQuery } from '@mantine/hooks'
 import useStyles from './ActionButton.styles'
+import { ReactNode } from 'react'
 
-const ActionButton = ({
-  children,
-  tooltip,
-  link,
-  target,
-  onClick,
-}: ActionButtonProps) => {
+interface Props {
+  children: ReactNode
+  tooltip?: string
+  link?: string
+  target?: string
+  onClick?: () => void
+}
+
+const ActionButton = ({ children, tooltip, link, target, onClick }: Props) => {
   /**
    * Use styles
    */

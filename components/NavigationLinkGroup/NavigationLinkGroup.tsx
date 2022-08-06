@@ -1,25 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import {
-  BsFileEarmarkSpreadsheet,
-  BsWallet,
-  BsArrowLeftRight,
-} from 'react-icons/bs'
 import NavigationLink from '@/components/NavigationLink/NavigationLink'
 import { useRouter } from 'next/router'
-
-const links = [
-  {
-    link: '/dashboard',
-    label: 'Report',
-    Icon: BsFileEarmarkSpreadsheet,
-  },
-  { link: '/dashboard/categories', label: 'Category', Icon: BsWallet },
-  {
-    link: '/dashboard/transactions',
-    label: 'Transaction',
-    Icon: BsArrowLeftRight,
-  },
-]
+import { links } from './data'
 
 const NavigationLinkGroup = () => {
   /**

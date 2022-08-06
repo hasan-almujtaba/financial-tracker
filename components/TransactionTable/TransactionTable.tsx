@@ -1,5 +1,5 @@
 import { supabase } from '@/plugins/supabase'
-import { Transaction, TransactionTable } from '@/types/transaction'
+import { Transaction } from '@/types/transaction'
 import { Table, Button, Text, Modal, ScrollArea } from '@mantine/core'
 import { useMutation } from 'react-query'
 import useStyles from './TransactionTable.styles'
@@ -11,7 +11,12 @@ import { useModals } from '@mantine/modals'
 import { useState } from 'react'
 import EditTransactionForm from '@/components/EditTransactionForm/EditTransactionForm'
 
-const TransactionTable = ({ transactions }: TransactionTable) => {
+interface Props {
+  transactions: Transaction[]
+  type: 'incomes' | 'expenses'
+}
+
+const TransactionTable = ({ transactions }: Props) => {
   /**
    * Use styles from useStyles variable
    */

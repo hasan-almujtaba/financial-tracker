@@ -1,9 +1,16 @@
-import { NavigationLinkProps } from '@/types/navigation'
+import { IconType } from 'react-icons'
 import { Text } from '@mantine/core'
 import Link from 'next/link'
 import useStyles from './NavigationLink.styles'
 
-const NavigationLink = ({ Icon, label, link, active }: NavigationLinkProps) => {
+interface Props {
+  link: string
+  label: string
+  active: boolean
+  Icon: IconType
+}
+
+const NavigationLink = ({ Icon, label, link, active }: Props) => {
   /**
    * Use styles from useStyles variable
    */

@@ -7,22 +7,3 @@ export interface Transaction {
   date: string | Date
   type: string
 }
-
-export interface TransactionTable {
-  transactions: Transaction[]
-  type: 'incomes' | 'expenses'
-}
-
-export interface CreateTransactionFormProps {
-  setOpened: (opened: boolean) => void
-}
-
-export interface EditTransactionFormProps {
-  setOpened: (opened: boolean) => void
-  transaction: Transaction
-}
-
-export interface ReportCardProps {
-  title: string
-  amount: string | number
-}

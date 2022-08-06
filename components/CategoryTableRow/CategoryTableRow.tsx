@@ -1,16 +1,15 @@
-import { CategoryTableRowProps } from '@/types/category'
+import { Category } from '@/types/category'
 import { Button, Text } from '@mantine/core'
 import { useModals } from '@mantine/modals'
 import { showNotification } from '@mantine/notifications'
 import { BsCheck } from 'react-icons/bs'
 import useStyles from './CategoryTableRow.styles'
 
-const CategoryTableRow = ({
-  name,
-  type,
-  id,
-  removeCategory,
-}: CategoryTableRowProps) => {
+interface Props extends Category {
+  removeCategory: (id: number) => void
+}
+
+const CategoryTableRow = ({ name, type, id, removeCategory }: Props) => {
   /**
    * Use styles from useStyles variable
    */

@@ -7,13 +7,17 @@ import useCategories from '@/hooks/categories'
 import { useMutation, useQueryClient } from 'react-query'
 import { useSession } from 'next-auth/react'
 import { useState } from 'react'
-import { CreateTransactionFormProps, Transaction } from '@/types/transaction'
+import { Transaction } from '@/types/transaction'
 import { supabase } from '@/plugins/supabase'
 import { showNotification } from '@mantine/notifications'
 import { BsCheck } from 'react-icons/bs'
 import { useFormatter } from '@/hooks/formatter'
 
-const CreateTransactionForm = ({ setOpened }: CreateTransactionFormProps) => {
+interface Props {
+  setOpened: (opened: boolean) => void
+}
+
+const CreateTransactionForm = ({ setOpened }: Props) => {
   /**
    * Session Hooks
    */

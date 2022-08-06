@@ -1,7 +1,11 @@
-import { PageHeaderProps } from '@/types/header'
 import useStyles from './PageHeader.styles'
 
-const PageHeader = ({ title, subtitle }: PageHeaderProps) => {
+interface Props {
+  title: string
+  subtitle: string
+}
+
+const PageHeader = ({ title, subtitle }: Props) => {
   /**
    * Use styles from useStyles variable
    */
