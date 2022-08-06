@@ -2,14 +2,6 @@ import { StateCreator } from 'zustand'
 import { Category } from './category'
 
 /**
- * Example slices
- */
-export interface ExampleSlice {
-  count: number
-  increment: () => void
-}
-
-/**
  * Category slices
  */
 export interface CategorySlice {
@@ -22,7 +14,7 @@ export interface CategorySlice {
 /**
  * Main Store Type
  */
-export type Store = ExampleSlice & CategorySlice
+export type Store = CategorySlice
 
 /**
  * Store creator type for interdependent slices
